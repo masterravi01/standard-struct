@@ -1,0 +1,110 @@
+<div class="col-lg-4 col-md-5 col-sm-6 col-10 p-0">
+  <div class="card">
+    <form [formGroup]="LoginForm" (ngSubmit)="logIn()">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body" [formGroup]="LoginForm">
+            <img
+              src="assets/logo.png"
+              alt="logo"
+              class="img-fluid mb-4"
+              width="120px"
+            />
+            <h4 class="mb-3 f-w-400">SignIn</h4>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">
+                <i class="material-symbols-rounded"> mail </i></span
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="you@example.com"
+              />
+              <div
+                *ngIf="
+                  LoginForm.controls['email'].invalid &&
+                  (LoginForm.controls['email'].dirty ||
+                    LoginForm.controls['email'].touched)
+                "
+                class="w-100"
+              >
+                <div
+                  class="text-danger text-start ps-5"
+                  *ngIf="LoginForm.controls['email'].errors?.['required']"
+                >
+                  Email is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group mb-4">
+              <span class="input-group-text" id="basic-addon3"
+                ><i
+                  class="material-symbols-rounded"
+                  style="vertical-align: middle; cursor: pointer"
+                  (click)="hide = !hide"
+                >
+                  {{ hide ? "lock" : "lock_open" }}
+                </i></span
+              >
+              <input
+                [type]="hide ? 'password' : 'text'"
+                class="form-control"
+                id="exampleInputPassword1"
+                formControlName="password"
+                placeholder="Enter Password"
+              />
+              <div
+                *ngIf="
+                  LoginForm.controls['password'].invalid &&
+                  (LoginForm.controls['password'].dirty ||
+                    LoginForm.controls['password'].touched)
+                "
+                class="w-100"
+              >
+                <div
+                  class="text-danger text-start ps-5"
+                  *ngIf="LoginForm.controls['password'].errors?.['required']"
+                >
+                  Password is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-start mt-2">
+              <div class="checkbox checkbox-primary d-inline">
+                <input
+                  type="checkbox"
+                  name="checkbox-fill-1"
+                  id="checkbox-fill-a1"
+                  checked=""
+                />
+                <label for="checkbox-fill-a1" class="ms-1">Remember me</label>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button
+                class="btn btn-block btn-primary mb-4"
+                [disabled]="LoginForm.invalid"
+              >
+                SignIn
+              </button>
+            </div>
+            <p class="mb-2 text-muted">
+              Forgot password?
+              <a [routerLink]="['/forgotpassword']" class="f-w-400">Reset</a>
+            </p>
+            <p class="mb-0 text-muted">
+              Don’t have an account?
+
+              <a [routerLink]="['/registeruser']" class="f-w-400">Signup</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<button class="btn btn-block btn-primary mb-4" (click)="test()"> test </button>
